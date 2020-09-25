@@ -1,0 +1,268 @@
+{
+  "foodCategory": [
+    {
+      "imgSrc": "img/dcfl01.png",
+      "categoryName": "美食"
+    },
+    {
+      "imgSrc": "img/dcfl02.png",
+      "categoryName": "早餐"
+    },
+    {
+      "imgSrc": "img/dcfl03.png",
+      "categoryName": "跑腿代购"
+    },
+    {
+      "imgSrc": "img/dcfl04.png",
+      "categoryName": "汉堡披萨"
+    },
+    {
+      "imgSrc": "img/dcfl05.png",
+      "categoryName": "甜品饮品"
+    },
+    {
+      "imgSrc": "img/dcfl06.png",
+      "categoryName": "速食简餐"
+    },
+    {
+      "imgSrc": "img/dcfl07.png",
+      "categoryName": "地方小吃"
+    },
+    {
+      "imgSrc": "img/dcfl08.png",
+      "categoryName": "米粉面馆"
+    },
+    {
+      "imgSrc": "img/dcfl09.png",
+      "categoryName": "包子粥铺"
+    },
+    {
+      "imgSrc": "img/dcfl10.png",
+      "categoryName": "炸鸡炸串"
+    }
+  ],
+
+  "foodLists": [
+    {
+      "fhead": "招牌",
+      "imgurl": "img/sp01.png",
+      "fname": "纯鲜肉（水饺）",
+      "fingredients": "新鲜猪肉",
+      "fprice": 15,
+      "fcount": 3
+    },
+    {
+      "fhead": "招牌",
+      "imgurl": "img/sp02.png",
+      "fname": "玉米鲜肉（水饺）",
+      "fingredients": "玉米鲜肉",
+      "fprice": 16,
+      "fcount": 2
+    },
+    {
+      "fhead": "",
+      "imgurl": "img/sp03.png",
+      "fname": "虾仁三鲜（蒸饺）",
+      "fingredients": "虾仁三鲜",
+      "fprice": 22,
+      "fcount": 0
+    },
+    {
+      "fhead": "",
+      "imgurl": "img/sp04.png",
+      "fname": "素三鲜（蒸饺）",
+      "fingredients": "素三鲜",
+      "fprice": 15,
+      "fcount": 0
+    },
+    {
+      "fhead": "",
+      "imgurl": "img/sp05.png",
+      "fname": "角瓜鸡蛋（蒸饺）",
+      "fingredients": "角瓜鸡蛋",
+      "fprice": 16,
+      "fcount": 0
+    },
+    {
+      "fhead": "",
+      "imgurl": "img/sp06.png",
+      "fname": "小白菜肉（水饺）",
+      "fingredients": "小白菜肉",
+      "fprice": 18,
+      "fcount": 0
+    },
+    {
+      "fhead": "",
+      "imgurl": "img/sp07.png",
+      "fname": "芹菜牛肉（水饺）",
+      "fingredients": "芹菜牛肉",
+      "fprice": 18,
+      "fcount": 0
+    }
+  ],
+  "shopLists": [
+    {
+      "shead": "新店",
+      "imgurl": "img/万家饺子-3.png",
+      "scount": 3,
+      "sname": "万家饺子（软件园E18店）",
+      "sstart": "15",
+      "ssend": "3",
+      "stype": "各种饺子炒菜"
+    },
+    {
+      "shead": "",
+      "imgurl": "img/豆腐-2.png",
+      "scount": 2,
+      "sname": "小锅饭豆腐店（全运店）",
+      "sstart": "15起送",
+      "ssend": "3配送",
+      "stype": "特色美食"
+    },
+    {
+      "shead": "",
+      "imgurl": "img/麦当劳-1.png",
+      "scount": 1,
+      "sname": "麦当劳麦乐送（全运店）",
+      "sstart": "15起送",
+      "ssend": "3配送",
+      "stype": "汉堡薯条"
+    },
+    {
+      "shead": "",
+      "imgurl": "img/sj04.png",
+      "scount": 0,
+      "sname": "米村拌饭（浑南店）",
+      "sstart": "15起送",
+      "ssend": "3配送",
+      "stype": "各种炒菜拌饭"
+    },
+    {
+      "shead": "",
+      "imgurl": "img/sj05.png",
+      "scount": 0,
+      "sname": "申记串道（中海康城店）",
+      "sstart": "15起送",
+      "ssend": "3配送",
+      "stype": "烤串炸串"
+    },
+    {
+      "shead": "",
+      "imgurl": "img/sj06.png",
+      "scount": 0,
+      "sname": "半亩良田排骨米饭",
+      "sstart": "15起送",
+      "ssend": "3配送",
+      "stype": "排骨米饭套餐"
+    },
+    {
+      "shead": "",
+      "imgurl": "img/sj07.png",
+      "scount": 0,
+      "sname": "茶兮鲜果饮品（国际软件园店）",
+      "sstart": "15起送",
+      "ssend": "3配送",
+      "stype": "甜品饮品"
+    },
+    {
+      "shead": "",
+      "imgurl": "img/sj08.png",
+      "scount": 0,
+      "sname": "唯一水果捞（软件园E18店）",
+      "sstart": "15起送",
+      "ssend": "3配送",
+      "stype": "新鲜水果"
+    },
+    {
+      "shead": "",
+      "imgurl": "img/sj09.png",
+      "scount": 0,
+      "sname": "满园春饼（全运店）",
+      "sstart": "15起送",
+      "ssend": "3配送",
+      "stype": "各种春饼"
+    }
+  ],
+  "recommendMerchant": [
+    {
+      "imgSrc": "img/sj01.png",
+      "name": "万家饺子(软件园E18店)",
+      "star": 5,
+      "score": 4.9,
+      "sales": 345,
+      "delivery": "蜂鸟专送",
+      "start": 15,
+      "deliveryCost": 3,
+      "distance": 3.22,
+      "time": 30,
+      "tips": "各种饺子",
+      "new": "饿了么新用户首单立减9元",
+      "special": "特价商品五折起",
+      "event": "2个活动"
+    },
+    {
+      "imgSrc": "img/sj02.png",
+      "name": "小锅饭豆腐店（全运店）",
+      "star": 5,
+      "score": 4.9,
+      "sales": 345,
+      "delivery": "蜂鸟专送",
+      "start": 15,
+      "deliveryCost": 3,
+      "distance": 3.22,
+      "time": 30,
+      "tips": "各种豆腐盖饭",
+      "new": "饿了么新用户首单立减9元",
+      "special": "特价商品五折起",
+      "event": "2个活动"
+    },
+    {
+      "imgSrc": "img/sj03.png",
+      "name": "麦当劳麦乐送（全运店）",
+      "star": 5,
+      "score": 4.9,
+      "sales": 345,
+      "delivery": "蜂鸟专送",
+      "start": 15,
+      "deliveryCost": 3,
+      "distance": 3.22,
+      "time": 30,
+      "tips": "快餐",
+      "new": "饿了么新用户首单立减9元",
+      "special": "特价商品五折起",
+      "event": "2个活动"
+    },
+    {
+      "imgSrc": "img/sj04.png",
+      "name": "米村拌饭（浑南店）",
+      "star": 5,
+      "score": 4.9,
+      "sales": 345,
+      "delivery": "蜂鸟专送",
+      "start": 15,
+      "deliveryCost": 3,
+      "distance": 3.22,
+      "time": 30,
+      "tips": "各种拌饭",
+      "new": "饿了么新用户首单立减9元",
+      "special": "特价商品五折起",
+      "event": "2个活动"
+    },
+    {
+      "imgSrc": "img/sj05.png",
+      "name": "申记串道（中海康城店）",
+      "star": 5,
+      "score": 4.9,
+      "sales": 345,
+      "delivery": "蜂鸟专送",
+      "start": 15,
+      "deliveryCost": 3,
+      "distance": 3.22,
+      "time": 30,
+      "tips": "各种豆腐盖饭",
+      "new": "饿了么新用户首单立减9元",
+      "special": "特价商品五折起",
+      "event": "2个活动"
+    }
+  ]
+}
