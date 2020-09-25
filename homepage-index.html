@@ -114,10 +114,10 @@
 <template id="recommendTypeTemp">
     <div class="container-fluid recommendTypeTemp text-muted">
         <div class="row text-center">
-            <h7 class="col-3">综合排序<i class="fa fa-caret-down"></i></h7>
-            <h7 class="col-3">距离最近</h7>
-            <h7 class="col-3">销量最高</h7>
-            <h7 class="col-3">筛选<i class="fa fa-filter"></i></h7>
+            <h5 class="col-3">综合排序<i class="fa fa-caret-down"></i></h5>
+            <h5 class="col-3">距离最近</h5>
+            <h5 class="col-3">销量最高</h5>
+            <h5 class="col-3">筛选<i class="fa fa-filter"></i></h5>
         </div>
     </div><br/>
 </template>
@@ -149,6 +149,7 @@
 </template>
 <!--商家列表模板-->
 <template id="merchantListTemp">
+
     <div>
         <topcpn>
             <div slot="info" class="col-10 offset-1 ">
@@ -157,6 +158,7 @@
         </topcpn>
 
         <template id="businessListTemp">
+            <router-link to="/merchantInfo">
             <div class="container-fluid lists businessListTemp">
                 <div v-for="(item,index) in $root.shopLists" class="row text-muted ">
                     <div class="col-2">
@@ -170,6 +172,7 @@
                     <hr style="border-bottom: 1px solid lightgrey"/>
                 </div>
             </div>
+            </router-link>
         </template>
         <businesslistcpn></businesslistcpn>
         <!-- 引入返回顶部的组件 -->
@@ -248,7 +251,9 @@
                 <router-link to="/merchantlist"><i class="fa fa-compass"></i>发现</router-link>
             </h6>
             <h6 class="col-3">
-                <router-link to="/merchantInfo"><i class="fa fa-file-text-o"></i>订单</router-link>
+                <!--<router-link to="/merchantInfo">-->
+                    <i class="fa fa-file-text-o"></i>订单
+                <!--</router-link>-->
             </h6>
             <h6 class="col-3"><i class="fa fa-user-o"></i>我的</h6>
         </div>
