@@ -91,3 +91,138 @@
     margin-top: 30px;
     margin-bottom: 30px;
 }
+
+.tele{
+    margin-top: 25px;
+    margin-bottom: 15px;
+}
+.form-control{
+    border: none;
+}
+.wenzi{
+    color: white;
+    text-align: center;
+    display: block;
+}
+.xiaoyi{
+    height: 60px;
+}
+.btn{
+    margin-top: 20px;
+}
+.text-muted ,.text-dark{
+    margin-top: 20px;
+    padding-left: 15px;
+}
+.text-dark{
+    font-size: larger;
+}
+.imgaa{
+    margin-top: 20px;
+    margin-left: 15px;
+}
+.xiaoer{
+    color: darkgray;
+    font-size: small;
+}
+.dizhi{
+    height: 120px;
+    background-color: rgb(0, 151, 239);
+    color: white;
+    font-weight: bolder;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+.shenyang{
+    font-size: 20px;
+}
+.dingdanpeisong{
+    padding-top: 5px;
+}
+.wanjiajiaozi{
+    margin-top: 35px;
+    margin-bottom: 30px;
+    font-size: 20px;
+    font-weight: bolder;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+.ww{
+    margin-top: 30px;
+    font-size: 20px;
+    font-weight: lighter;
+}
+.yy{
+    margin-top: 50px;
+    font-size: 25px;
+
+}
+.quzhifu{
+    height: 60px;
+    text-align: center;
+    font-size: 30px;
+}
+.wodedingdan{
+    font-size: 20px;
+    margin-top: 20px;
+
+}
+.yizhifu{
+    margin-top: 30px;
+    margin-bottom: 30px;
+    color: rgb(153, 153, 153);
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-top: 100px;
+}
+.weizhifu{
+    margin-top: 30px;
+    margin-bottom: 30px;
+    color: rgb(153, 153, 153);
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-top: 50px;
+}
+.jiage{
+    font-size: 15px;
+}
+.jiesuan{
+    font-size: 6px;
+}
+.gouwuche{
+    width: 60px;
+    height: 60px;
+    box-sizing: border-box;
+    border: solid 2px #444;
+    border-radius: 2000px;
+    background-color: #3190E8;
+    font-size: 40px;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: -5px;
+    margin-left: 5px;
+
+    position: relative;
+}
+.cart-left-icon-quantity {
+    width: 4vw;
+    height: 4vw;
+    border-radius: 2.5vw;
+    background-color: red;
+    color: #fff;
+    font-size: 3.6vw;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    position: absolute;
+    right: -1.5vw;
+    top: -1.5vw;
+}
+.che{
+    display: flex;
+    flex-wrap: wrap;
+}

@@ -219,6 +219,35 @@
                     </div>
                     <hr style="border-bottom: 1px solid lightgrey" />
                 </div>
+
+                <div class="container-fluid fixed-bottom mainNavTemp ">
+                    <div class="row quzhifu">
+                        <div class="col-8 text-white bg-dark">
+                            <div class="container-fluid">
+                                <div class="che" >
+                                    <div class=" gouwuche">
+                                        <i class="fa fa-shopping-cart "></i>
+                                        <div class="cart-left-icon-quantity ">3</div>
+                                    </div>
+
+                                    <div class=" jiage">
+                                    ￥12.88
+                                    <p class="pesongfei">另需配送费3元</p>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-4 text-white bg-success">
+                            <router-link to="/queren">
+                                <div>
+                                    去结算
+                                </div>
+                            </router-link>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </template>
         <choosefoodcpn></choosefoodcpn>
@@ -226,7 +255,7 @@
         <!-- 引入返回顶部的组件 -->
         <gotopcpn></gotopcpn>
         <!--  主导航条-->
-        <mainnavcpn></mainnavcpn>
+        <!--<mainnavcpn></mainnavcpn>-->
     </div>
 </template>
 
@@ -250,11 +279,11 @@
                 <router-link to="/merchantlist"><i class="fa fa-compass"></i>发现</router-link>
             </h6>
             <h6 class="col-3">
-                <!--<router-link to="/merchantInfo">-->
-                    <i class="fa fa-file-text-o"></i>订单
-                <!--</router-link>-->
+                <router-link to="/dingdan"><i class="fa fa-file-text-o"></i>订单</router-link>
             </h6>
-            <h6 class="col-3"><i class="fa fa-user-o"></i>我的</h6>
+            <h6 class="col-3">
+                <router-link to="/denglu"><i class="fa fa-user-o"></i>我的</router-link>
+            </h6>
         </div>
     </div>
 </template>
@@ -267,6 +296,294 @@
     </div>
 </template>
 
+<!--我的-->
+<!--登录界面-->
+<template id="dengLu">
+    <div>
+        <topcpn>
+            <div slot="info" class=" col-10 offset-1 xiaoyi">
+                <h2 class="wenzi">用户登录</h2>
+            </div>
+        </topcpn>
+        <div class="tele container-fluid">
+            <div class="row">
+                <span class="col-3">手机号码：</span>
+                <input type="text" class="form-control col-9" placeholder="请输入手机号">
+                <span class="col-3">密码：</span>
+                <input type="password" class="form-control col-9" placeholder="请输入密码">
+            </div>
+        </div>
+        <div class="container-fluid">
+            <div class="row">
+                <button type="submit" class="btn btn-success btn-lg col-10 offset-1" >登录</button>
+            </div>
+        </div>
+        <br/>
+        <router-link to="/zhuce">
+            <div class="container-fluid">
+                <div class="row">
+                    <button type="submit" class="btn btn-primary btn-lg col-10 offset-1" >去注册</button>
+                </div>
+            </div>
+        </router-link>
+        <mainnavcpn></mainnavcpn>
+        <gotopcpn></gotopcpn>
+    </div>
+</template>
+<!--注册-->
+<template id="zhuCe">
+    <div>
+        <topcpn>
+            <div slot="info" class="col-10 offset-1 xiaoyi">
+                <h1 class="wenzi">用户注册</h1>
+            </div>
+        </topcpn>
+        <form>
+            <div class="tele container-fluid">
+                <div class="row">
+                    <span class="col-3">手机号码：</span>
+                    <input type="tel" class="form-control col-9"   placeholder="请输入手机号">
+                    <span class="col-3"> 输入密码：</span>
+                    <input type="tel" class="form-control col-9"   placeholder="请输入密码">
+                    <span class="col-3">确认密码：</span>
+                    <input type="tel" class="form-control col-9"   placeholder="请确认密码">
+                    <span class="col-3">用户姓名：</span>
+                    <input type="password" class="form-control col-9"  placeholder="请输入您的用户名">
+                    <span class="col-3">性别：</span>
+                    <input class="col-1" type="radio" name="sex" checked >男
+                    <input class="col-1" type="radio" name="sex" >女
+            </div>
+                </div>
+            <router-link to="/denglu">
+                <div class="container-fluid">
+                    <div class="row">
+                        <button type="submit" class="btn btn-success btn-lg col-10 offset-1" >注册</button>
+                    </div>
+                </div>
+            </router-link>
+        </form>
+        <mainnavcpn></mainnavcpn>
+        <gotopcpn></gotopcpn>
+    </div>
+</template>
+<!--在线支付界面-->
+<template id="zhiFu">
+    <div class="zhifu">
+        <topcpn>
+            <div slot="info" class="col-10 offset-1 xiaoyi">
+                <h1 class="wenzi">在线支付</h1>
+            </div>
+        </topcpn>
+        <h3 class="text-muted">订单信息：</h3>
+        <div class="container-fluid">
+            <div class="row">
+                <span class="col-10 text-dark font-weight-bolder ">
+                    万家饺子（软件园E18店） </span>
+                <div  v-on:click="xiala=!xiala" class="col-1">
+                    <i class="fa fa-caret-down "></i>
+                </div>
+
+                <span class="col-1">￥49</span>
+            </div>
+        </div>
+        <div class="container-fluid xiaoer" v-show="xiala">
+            <div class="row">
+                <span class="col-11">纯肉鲜肉（水饺） x 2</span>
+                <span class="col-1">￥15</span>
+                <span class="col-11">玉米鲜肉（水饺） x 1</span>
+                <span class="col-1">￥16</span>
+                <span class="col-11">配送费</span>
+                <span class="col-1">￥3</span>
+            </div>
+        </div>
+
+
+        <div class="imgaa">
+            <img src="img/alipay.png">
+            <i class="fa fa-check-circle"></i>
+        </div>
+        <div class="imgaa">
+            <img src="img/wechat.png" >
+        </div>
+        <div>
+            <button type="submit" class="btn btn-success btn-lg col-10 offset-1">确认支付</button>
+        </div>
+        <mainnavcpn></mainnavcpn>
+        <gotopcpn></gotopcpn>
+    </div>
+</template>
+
+<!--确认支付界面 -->
+<template id="queRen">
+
+    <div>
+        <topcpn>
+            <div slot="info" class="col-10 offset-1 xiaoyi">
+                <h1 class="wenzi">确认支付</h1>
+            </div>
+        </topcpn>
+        <div class="dizhi">
+            <h5 class="dingdanpeisong">订单配送至：</h5>
+            <div class="container-fluid">
+                <div class="row">
+                <p class="shenyang"> 沈阳市浑南区智慧四街1-121号 </p>
+                <i class="fa fa-angle-right col-2"></i>
+                </div>
+            </div>
+            <p>习近平先生 13656785432</p>
+        </div>
+        <div class="wanjiajiaozi">
+            <h3 >万家饺子（软件园E18店）</h3>
+        </div>
+        <hr/>
+        <div class="container-fluid ww">
+            <div class="row">
+                <img src="img/sp01.png" class="col-1">
+                <span class="col-9 offset-1">纯肉鲜肉（水饺） x 2</span>
+                <span class="col-1">￥15</span>
+            </div>
+        </div>
+
+                <div class="container-fluid ww">
+                    <div class="row">
+                <img src="img/sp02.png" class="col-1">
+                <span class="col-9 offset-1">玉米鲜肉（水饺） x 1</span>
+                <span class="col-1">￥16</span>
+                    </div>
+                </div>
+        <div class="container-fluid yy">
+            <div class="row">
+                <p class="col-11">配送费</p>
+                <p class="col-1">￥3</p>
+            </div>
+        </div>
+
+        <div class="container-fluid fixed-bottom  ">
+            <div class="row quzhifu">
+                <div class="col-8 text-white bg-dark">
+                    ￥49
+                </div>
+                <div class="col-4 text-white bg-success">
+                    <router-link to="/zhifu">
+                        <div>
+                            去支付
+                        </div>
+                    </router-link>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <mainnavcpn></mainnavcpn>
+    <gotopcpn></gotopcpn>
+    </div>
+</template>
+<!--订单界面-->
+<template id="dingDan">
+
+    <div>
+        <topcpn>
+            <div slot="info" class="col-10 offset-1 xiaoyi">
+                <h1 class="wenzi">我的订单</h1>
+            </div>
+        </topcpn>
+        <h3 class="weizhifu">未支付订单信息：</h3>
+        <div class="container-fluid">
+            <div class="row wodedingdan">
+                <p class="col-9">
+                    万家饺子（软件园E18店）
+                <div  v-on:click="xiala1=!xiala1">
+                    <i class="fa fa-caret-down" ></i>
+                </div>
+                </p>
+                <p class="col-1">&#165;49</p>
+                <router-link to="/zhifu">
+                    <div class="order-info-right-icon bg-warning" to="/zhifu">去支付</div>
+                </router-link>
+            </div>
+        </div>
+        <div class="container-fluid xiaoer" v-show="xiala1">
+            <div class="row">
+                <p class="col-11">纯肉鲜肉（水饺） x 2</p>
+                <p class="col-1">&#165;15</p>
+                <p class="col-11">玉米鲜肉（水饺） x 1</p>
+                <p class="col-1">&#165;16</p>
+                <p class="col-11">配送费</p>
+                <p class="col-1">&#165;3</p>
+            </div>
+        </div>
+        <div class="container-fluid">
+            <div class="row wodedingdan">
+                <p class="col-9">
+                    小锅饭豆腐馆（全运店）
+                <div  v-on:click="xiala2=!xiala2"  >
+                    <i class="fa fa-caret-down" ></i>
+                </div>
+                </p>
+                <p class="col-1">&#165;55</p>
+                <router-link to="/zhifu">
+                    <div class="order-info-right-icon bg-warning" >去支付</div>
+                </router-link>
+            </div>
+        </div>
+        <div class="container-fluid xiaoer" v-show="xiala2">
+            <div class="row">
+                <p class="col-11">纯肉鲜肉（水饺） x 2</p>
+                <p class="col-1">&#165;15</p>
+                <p class="col-11">玉米鲜肉（水饺） x 1</p>
+                <p class="col-1">&#165;16</p>
+                <p class="col-11">配送费</p>
+                <p class="col-1">&#165;3</p>
+            </div>
+        </div>
+        <h3 class="yizhifu">已支付订单信息：</h3>
+        <div class="container-fluid">
+            <div class="row wodedingdan">
+                <p class="col-10">
+                    万家饺子（软件园E18店）
+                <div  v-on:click="xiala3=!xiala3" >
+                    <i class="fa fa-caret-down" ></i>
+                </div>
+                </p>
+                <p class="col-1">&#165;49</p>
+            </div>
+        </div>
+        <div class="container-fluid xioaer" v-show="xiala3">
+            <div class="row">
+                <p class="col-11">纯肉鲜肉（水饺） x 2</p>
+                <p class="col-1">&#165;15</p>
+                <p class="col-11">玉米鲜肉（水饺） x 1</p>
+                <p class="col-1">&#165;16</p>
+                <p class="col-11">配送费</p>
+                <p class="col-1">&#165;3</p>
+            </div>
+        </div>
+
+        <div class="container-fluid ">
+            <div class="row wodedingdan">
+                <p class="col-10">
+                    小锅饭豆腐馆（全运店）
+                <div  v-on:click="xiala4=!xiala4" >
+                    <i class="fa fa-caret-down" ></i>
+                </div>
+                </p>
+                <p class="col-1">&#165;55</p>
+            </div>
+        </div>
+        <div class="container-fluid xiaoer" v-show="xiala4">
+            <div class="row">
+                <p class="col-11">纯肉鲜肉（水饺） x 2</p>
+                <p class="col-1">&#165;15</p>
+                <p class="col-11">玉米鲜肉（水饺） x 1</p>
+                <p class="col-1">&#165;16</p>
+                <p class="col-11">配送费</p>
+                <p class="col-1">&#165;3</p>
+            </div>
+        </div>
+        <mainnavcpn></mainnavcpn>
+        <gotopcpn></gotopcpn>
+    </div>
+</template>
 <!-- jQuery (Bootstrap 的 JavaScript 插件需要引入 jQuery) -->
 <script src="js/jquery-3.3.1.js"></script>
 <!-- 包括所有已编译的插件 -->
@@ -276,172 +593,6 @@
 <script src="js/vue-resources.js"></script>
 <script src="js/vue-router.js"></script>
 <script src="js/custom.js"></script>
-<script>
-    //创建全局组件--回到顶部按钮
-    let goTopCpn = Vue.extend({
-        template: "#goTopTemp",
-        data: function () {
-            return {
-                scrollTop: 0, //记录滚动条的垂直位置
-            };
-        },
-        //回到顶部按钮的方法区
-        methods: {
-            goTop() {
-                //这里的原理是用定时器每5毫秒执行一次函数，每一次滚轮px减10，直到0为止,首先判断是否存在
-                let timeCouter = setInterval(function () {
-                    if (
-                        window.pageYOffset ||
-                        document.documentElement.scrollTop ||
-                        document.body.scrollTop
-                    ) {
-                        window.pageYOffset -= 10;
-                        document.documentElement.scrollTop -= 10;
-                        document.body.scrollTop -= 10;
-                    } else {
-                        clearInterval(timeCouter); //scrollTop到0时就移除定时器
-                    }
-                }, 5);
-            },
-            getScrollTop() {// 由于浏览器的兼容性问题,本例中通过三种方式判断偏移的位置
-                this.scrollTop =
-                    window.pageYOffset ||
-                    document.documentElement.scrollTop ||
-                    document.body.scrollTop;
-            },
-        },
-        //钩子函数,当加载的时候给window对象添加事件
-        mounted() {
-            window.addEventListener("scroll", this.getScrollTop);
-        },
-        //计算属性,通过计算属性确定是否显示返回按钮,本例中也可使用判断表达式的方式
-        computed: {
-            topDistance: function () {
-                //判断滚轮位置是否大于100px，如果大于就true，否则false,本例也可以不使用该计算属性
-                return (value = this.scrollTop > 100 ? true : false);
-            },
-        }
-    });
-    let indexCpn = Vue.extend({
-        template: "#indexTemp",
-    });
-    let foodCategoryCpn = Vue.extend({
-        template: "#foodCategoryTemp",
-    });
-    let bannerCpn = Vue.extend({
-        template: '#bannerTemp',
-    });
-    let supermemberCpn = Vue.extend({
-        template: '#supermemberTemp',
-    });
-    let recommendCpn = Vue.extend({
-        template: '#recommendTemp',
-    });
-    let recommendTypeCpn = Vue.extend({
-        template: '#recommendTypeTemp',
-    });
-    let recommendMerchantCpn = Vue.extend({
-        template: "#recommendMerchantTemp",
-    });
-    let merchantListCpn = Vue.extend({
-        template: "#merchantListTemp",
-    });
-    let merchantInfoCpn = Vue.extend({
-        template: "#merchantInfoTemp",
-    });
-    let mainNavCpn = Vue.extend({
-        template: "#mainNavTemp",
-    });
-    let topCpn = Vue.extend({
-        template: "#topTemp",
-    });
-    let businessListCpn = Vue.extend({
-        template: "#businessListTemp",
-    });
-    let chooseFoodCpn = Vue.extend({
-        template: "#chooseFoodTemp",
-    });
-    let businessInfoCpn = Vue.extend({
-        template: "#businessInfoTemp",
-    });
-
-    //注册为全局组件
-    Vue.component("gotopcpn", goTopCpn);
-    Vue.component("mainnavcpn", mainNavCpn);
-    Vue.component("topcpn", topCpn);
-    Vue.component("indexcpn", indexCpn);
-    Vue.component("foodcategorycpn", foodCategoryCpn);
-    let bannercpn = Vue.component('bannercpn', bannerCpn);
-    let supermembercpn = Vue.component('supermembercpn', supermemberCpn);
-    let recommendcpn = Vue.component('recommendcpn', recommendCpn);
-    let recommendtypecpn = Vue.component('recommendtypecpn', recommendTypeCpn);
-    Vue.component("recommendmerchantcpn", recommendMerchantCpn);
-    Vue.component("merchantlistcpn", merchantListCpn);
-    Vue.component("merchantinfocpn", merchantInfoCpn);
-    Vue.component("businesslistcpn", businessListCpn);
-    Vue.component("choosefoodcpn", chooseFoodCpn);
-    Vue.component("businessinfocpn", businessInfoCpn);
-
-    //配置路由
-    let routes = [
-        {path: '/index', component: indexCpn},
-        {path: '/merchantlist', component: merchantListCpn},
-        {path: '/merchantInfo', component: merchantInfoCpn},
-        /*{path: '/curs', component: curs,
-            //配置子路由
-            children: [
-                {path: '/curs/advance',component: advance},
-                {path: 'normal',component:  normal},
-                {path: 'base',component:  base}
-            ]},*/
-        {path: '/', redirect: '/index'},
-        {path: '*', redirect: '/index'}
-    ];
-    //注册路由
-    let router = new VueRouter({
-        routes: routes,/*此处是routes,一定要牢记*/
-        linkActiveClass: 'active'/*自定义激活的链接的样式*/
-    });
-    //根组件
-    const vm = new Vue({
-        el: "#app",
-        data: {
-            foodCategory: [],
-            recommendMerchant: [],
-            shopLists: [],
-            foodLists:[]
-        },
-        router: router,
-        //挂载钩子上添加获取数据的处理
-        mounted: function () {
-            this.$http.get("goods.json").then(
-                function (res) {
-                    this.foodCategory = res.body.foodCategory;
-                    this.recommendMerchant = res.body.recommendMerchant;
-                    this.shopLists = res.body.shopLists;
-                    this.foodLists = res.body.foodLists;
-                }
-            );
-        }
-    });
-
-    //通过返回顶部的按钮已经可以学习到vue如何实现滚动事件监听,但是编写起来还是比较麻烦的,所以搜索栏本例使用jQuery完成
-    $(document).ready(function () {
-        //当滚动条的位置处于距顶部50像素以下时，
-        $(window).scroll(function () {
-            if ($(".currentLoc").length) {//如果存在location定位则使用A处理方案
-                if ($(window).scrollTop() > 60) {//注意在css样式定义中,currentLoc被定义为60了
-                    $(".topBanner").addClass("fixed-top")
-                    $(".topBanner .currentLoc").css("display", "none");
-                } else {
-                    $(".topBanner").removeClass("fixed-top");
-                    $(".topBanner .currentLoc").css("display", "block");
-                }
-            } else {//否则使用B处理方案
-                $(".topBanner").addClass("fixed-top");
-            }
-        });
-    });
-</script>
+<script src="js/custom.js"></script>
 </body>
 </html>
