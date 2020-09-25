@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>饿了么</title>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <!-- 引入 Bootstrap -->
+    <link href="css/bootstrap.css" rel="stylesheet"/>
+    <link href="css/animate.css" rel="stylesheet"/>
+    <link href="framework/font-awesome/css/font-awesome.css" rel="stylesheet"/>
+    <link href="css/custom.css" rel="stylesheet"/>
+    <!-- HTML5 Shim 和 Respond.js 用于让 IE8 支持 HTML5元素和媒体查询 -->
+    <!-- 注意： 如果通过 file://  引入 Respond.js 文件，则该文件无法起效果 -->
+    <!--[if lt IE 9]>
+    <script
+            src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"
+            rel="external nofollow"
+    ></script>
+    <script
+            src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"
+            rel="external nofollow"
+    ></script>
+    <![endif]-->
+</head>
+
+
+<body>
+<div id="app">
+    <transition enter-active-class="animated fadeIn">
+        <router-view></router-view>
+    </transition>
+
+
+</div>
+<!--首页模板-->
+<template id="indexTemp">
+    <div>
+        <topcpn>
+            <h3 class="currentLoc font-weight-bolder text-white offset-1" slot="loc">
+                <i class="fa fa-map-marker"></i>河口软件园<i class="fa fa-caret-down"></i>
+            </h3>
+            <div slot="info" class="col-10 offset-1 ">
+                <div class="input-group mb-3 mt-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="fa fa-search"></i></span>
+                    </div>
+                    <input type="text" class="form-control" placeholder="搜索饿了么商家、商品名称"/>
+                </div>
+            </div>
+        </topcpn>
+        <!--        美食分类展示,采用简单的直接调取root组件数据的方式处理-->
+        <foodcategorycpn></foodcategorycpn>
+
+        <bannercpn></bannercpn>
+        <supermembercpn></supermembercpn>
+        <recommendcpn></recommendcpn>
+        <recommendtypecpn></recommendtypecpn>
+        <!--        推荐商户展示-->
+        <recommendmerchantcpn></recommendmerchantcpn>
+        <!-- 引入返回顶部的组件 -->
+        <gotopcpn></gotopcpn>
+        <!--  主导航条-->
+        <mainnavcpn></mainnavcpn>
+    </div>
+</template>
+<!--分类模板-->
+<template id="foodCategoryTemp">
+    <div class="row foodCategoryTemp">
+        <router-link to="merchantlist"
+                     v-for="(item,index) in $root.foodCategory"
+                     class="col-2 text-center mt-3"  :class="{'offset-1':!(index%5)}"/>
+        <img v-bind:src="item.imgSrc"/>{{item.categoryName}}
+        </router-link>
+    </div>
+</template>
+<!-- 横幅广告部分 -->
+<template id="bannerTemp">
+    <div class="container-fluid bannerTemp">
+        <div class="row">
+            <div class="col-6">
+                <h3 class="font-weight-bolder">品质套餐</h3>
+                <p>搭配齐全吃得好</p>
+                <a href="order.html">立即抢购 &gt;</a>
+            </div>
+            <div class="col-6 text-right text-center">
+                <img src="img/主页-1.png">
+            </div>
+        </div>
+    </div>
+    </div>
+</template>
+<!-- 超级会员部分 -->
+<template id="supermemberTemp">
+    <div class="container-fluid supermemberTemp">
+        <div class="row">
+            <div class="col-12">
+
+                <img src="img/super_member.png ">
+                <span class="font-weight-bolder text-dark ">超级会员</span>
+                <span>• 每月享超值权益</span>
+                <a href="login.html"> 立即开通 &gt; </a>
+            </div>
+        </div>
+    </div>
+</template>
+<!-- 推荐商家部分 -->
+<template id="recommendTemp">
+    <span class="recommendTemp">
+        <p class="text-center"><span> - 推荐商家 - </span></p>
+    </span>
+</template>
+
+<!--推荐方式-->
+<template id="recommendTypeTemp">
+    <div class="container-fluid recommendTypeTemp text-muted">
+        <div class="row text-center">
+            <h7 class="col-3">综合排序<i class="fa fa-caret-down"></i></h7>
+            <h7 class="col-3">距离最近</h7>
+            <h7 class="col-3">销量最高</h7>
+            <h7 class="col-3">筛选<i class="fa fa-filter"></i></h7>
+        </div>
+    </div><br/>
+</template>
+
+<!--推荐商户模板-->
+<template id="recommendMerchantTemp">
+    <div class="container-fluid lists">
+        <div v-for="(item,index) in $root.recommendMerchant" class="row  text-muted">
+            <div class="col-12 col-sm-2">
+                <img v-bind:src="item.imgSrc" :alt="item.name"/>
+            </div>
+            <div class="col-8 col-sm-6">
+                <h3 class="font-weight-bolder text-dark">{{item.name}}</h3>
+                <p><i v-for="i in item.star" class="fa fa-star text-warning"></i>{{item.score}} 月售{{item.sales}}单</p>
+                <p>￥{{item.start}}起送 | ￥{{item.deliveryCost}}配送</p>
+                <p>{{item.tips}}</p>
+                <p><span class="business-info-promotion-left-incon">新 </span>{{item.new}}</p>
+                <p><span class="business-info-promotion-left-incon">特 </span>{{item.special}}</p>
+            </div>
+            <div class="col-4 col-sm-4 text-right">
+                <p>.</p>
+                <p><span>{{item.delivery}}</span></p>
+                <p>{{item.distance}}km | {{item.time}}分钟</p><br/><br/>
+                <p>{{item.event}} <i class="fa fa-arrow-circle-down"></i></p>
+            </div>
+            <hr style="border-bottom: 1px solid lightgrey" />
+        </div>
+    </div>
+</template>
+<!--商家列表模板-->
+<template id="merchantListTemp">
+    <div>
+        <topcpn>
+            <div slot="info" class="col-10 offset-1 ">
+                <h1 class="display-4 text-white text-center ">商家列表</h1>
+            </div>
+        </topcpn>
+
+        <template id="businessListTemp">
+            <div class="container-fluid lists businessListTemp">
+                <div v-for="(item,index) in $root.shopLists" class="row text-muted ">
+                    <div class="col-2">
+                        <img v-bind:src="item.imgurl" :alt="item.sname"/>
+                    </div>
+                    <div class="col-10">
+                        <h1 class="font-weight-bolder text-dark">{{item.sname}}</h1><br/>
+                        <p>￥{{item.sstart}}起送 | ￥{{item.ssend}}配送</p>
+                        <p>{{item.stype}}</p>
+                    </div>
+                    <hr style="border-bottom: 1px solid lightgrey"/>
+                </div>
+            </div>
+        </template>
+        <businesslistcpn></businesslistcpn>
+        <!-- 引入返回顶部的组件 -->
+        <gotopcpn></gotopcpn>
+        <!--  主导航条-->
+        <mainnavcpn></mainnavcpn>
+    </div>
+</template>
+
+<!--商家信息模板-->
+<template id="merchantInfoTemp">
+    <div>
+        <topcpn>
+            <div slot="info" class="col-8 offset-2 ">
+                <h1 class="display-4 text-white text-center">商家信息</h1>
+            </div>
+        </topcpn>
+        <template id="chooseFoodTemp">
+            <div class="container-fluid chooseFoodTemp">
+                <div class="row text-muted">
+                    <div class="col-10 offset-1 text-center">
+                        <img src="img/万家饺子-big.png"/>
+                    </div>
+                    <div class="col-12 text-center ">
+                        <h1 class="font-weight-bolder text-dark">万家饺子（软件园E18店）</h1><br/>
+                        <h4>￥15起送  ￥3配送</h4>
+                        <h4>各种饺子炒菜</h4><br/>
+                    </div>
+                </div>
+            </div>
+        </template>
+        <template id="businessInfoTemp">
+            <div class="container-fluid lists businessInfoTemp">
+                <div v-for="(item,index) in $root.foodLists" class="row text-muted ">
+                    <div class="col-2">
+                        <img v-bind:src="item.imgurl" :alt="item.fname"/>
+                    </div>
+                    <div class="col-8">
+                        <h1 class="font-weight-bolder text-dark">{{item.fname}}</h1><br/>
+                        <p>{{item.fingredients}}</p>
+                        <p>￥{{item.fprice}}</p>
+                    </div>
+                    <div class="col-2 text-center">
+                        <i class="fa fa-minus-circle">{{item.fcount}}</i><i class="fa fa-plus-circle"></i>
+                    </div>
+                    <hr style="border-bottom: 1px solid lightgrey" />
+                </div>
+            </div>
+        </template>
+        <choosefoodcpn></choosefoodcpn>
+        <businessinfocpn></businessinfocpn>
+        <!-- 引入返回顶部的组件 -->
+        <gotopcpn></gotopcpn>
+        <!--  主导航条-->
+        <mainnavcpn></mainnavcpn>
+    </div>
+</template>
+
+<!-- 回到顶部按钮组件模板,显示的时候使用过渡效果完成,封装为组件的目的是能够以后复用 -->
+<template id="goTopTemp">
+    <!-- 此处使用了animate动画库,所以记得要引入对应文件 -->
+    <transition enter-active-class="animated fadeIn">
+        <div class="scrollTopZone" v-show="scrollTop>100" @click="goTop">
+            <i class="fa fa-arrow-circle-o-up"></i>
+        </div>
+    </transition>
+</template>
+<!-- 主导航菜单的组件模板 -->
+<template id="mainNavTemp">
+    <div class="container-fluid fixed-bottom mainNav text-center font-weight-bolder text-muted">
+        <div class="row">
+            <h6 class="col-3">
+                <router-link to="/index"><i class="fa fa-home"></i>首页</router-link>
+            </h6>
+            <h6 class="col-3">
+                <router-link to="/merchantlist"><i class="fa fa-compass"></i>发现</router-link>
+            </h6>
+            <h6 class="col-3">
+                <router-link to="/merchantInfo"><i class="fa fa-file-text-o"></i>订单</router-link>
+            </h6>
+            <h6 class="col-3"><i class="fa fa-user-o"></i>我的</h6>
+        </div>
+    </div>
+</template>
+<!--顶部的组件-->
+<template id="topTemp">
+    <div class="topBanner">
+        <slot name="loc"></slot>
+        <slot name="info"></slot>
+        <slot name="locInfo"></slot>
+    </div>
+</template>
+
+<!-- jQuery (Bootstrap 的 JavaScript 插件需要引入 jQuery) -->
+<script src="js/jquery-3.3.1.js"></script>
+<!-- 包括所有已编译的插件 -->
+<script src="js/bootstrap.js"></script>
+<!-- 导入vue的框架和库 -->
+<script src="js/vue.js"></script>
+<script src="js/vue-resources.js"></script>
+<script src="js/vue-router.js"></script>
+<script src="js/custom.js"></script>
+<script>
+    //创建全局组件--回到顶部按钮
+    let goTopCpn = Vue.extend({
+        template: "#goTopTemp",
+        data: function () {
+            return {
+                scrollTop: 0, //记录滚动条的垂直位置
+            };
+        },
+        //回到顶部按钮的方法区
+        methods: {
+            goTop() {
+                //这里的原理是用定时器每5毫秒执行一次函数，每一次滚轮px减10，直到0为止,首先判断是否存在
+                let timeCouter = setInterval(function () {
+                    if (
+                        window.pageYOffset ||
+                        document.documentElement.scrollTop ||
+                        document.body.scrollTop
+                    ) {
+                        window.pageYOffset -= 10;
+                        document.documentElement.scrollTop -= 10;
+                        document.body.scrollTop -= 10;
+                    } else {
+                        clearInterval(timeCouter); //scrollTop到0时就移除定时器
+                    }
+                }, 5);
+            },
+            getScrollTop() {// 由于浏览器的兼容性问题,本例中通过三种方式判断偏移的位置
+                this.scrollTop =
+                    window.pageYOffset ||
+                    document.documentElement.scrollTop ||
+                    document.body.scrollTop;
+            },
+        },
+        //钩子函数,当加载的时候给window对象添加事件
+        mounted() {
+            window.addEventListener("scroll", this.getScrollTop);
+        },
+        //计算属性,通过计算属性确定是否显示返回按钮,本例中也可使用判断表达式的方式
+        computed: {
+            topDistance: function () {
+                //判断滚轮位置是否大于100px，如果大于就true，否则false,本例也可以不使用该计算属性
+                return (value = this.scrollTop > 100 ? true : false);
+            },
+        }
+    });
+    let indexCpn = Vue.extend({
+        template: "#indexTemp",
+    });
+    let foodCategoryCpn = Vue.extend({
+        template: "#foodCategoryTemp",
+    });
+    let bannerCpn = Vue.extend({
+        template: '#bannerTemp',
+    });
+    let supermemberCpn = Vue.extend({
+        template: '#supermemberTemp',
+    });
+    let recommendCpn = Vue.extend({
+        template: '#recommendTemp',
+    });
+    let recommendTypeCpn = Vue.extend({
+        template: '#recommendTypeTemp',
+    });
+    let recommendMerchantCpn = Vue.extend({
+        template: "#recommendMerchantTemp",
+    });
+    let merchantListCpn = Vue.extend({
+        template: "#merchantListTemp",
+    });
+    let merchantInfoCpn = Vue.extend({
+        template: "#merchantInfoTemp",
+    });
+    let mainNavCpn = Vue.extend({
+        template: "#mainNavTemp",
+    });
+    let topCpn = Vue.extend({
+        template: "#topTemp",
+    });
+    let businessListCpn = Vue.extend({
+        template: "#businessListTemp",
+    });
+    let chooseFoodCpn = Vue.extend({
+        template: "#chooseFoodTemp",
+    });
+    let businessInfoCpn = Vue.extend({
+        template: "#businessInfoTemp",
+    });
+
+    //注册为全局组件
+    Vue.component("gotopcpn", goTopCpn);
+    Vue.component("mainnavcpn", mainNavCpn);
+    Vue.component("topcpn", topCpn);
+    Vue.component("indexcpn", indexCpn);
+    Vue.component("foodcategorycpn", foodCategoryCpn);
+    let bannercpn = Vue.component('bannercpn', bannerCpn);
+    let supermembercpn = Vue.component('supermembercpn', supermemberCpn);
+    let recommendcpn = Vue.component('recommendcpn', recommendCpn);
+    let recommendtypecpn = Vue.component('recommendtypecpn', recommendTypeCpn);
+    Vue.component("recommendmerchantcpn", recommendMerchantCpn);
+    Vue.component("merchantlistcpn", merchantListCpn);
+    Vue.component("merchantinfocpn", merchantInfoCpn);
+    Vue.component("businesslistcpn", businessListCpn);
+    Vue.component("choosefoodcpn", chooseFoodCpn);
+    Vue.component("businessinfocpn", businessInfoCpn);
+
+    //配置路由
+    let routes = [
+        {path: '/index', component: indexCpn},
+        {path: '/merchantlist', component: merchantListCpn},
+        {path: '/merchantInfo', component: merchantInfoCpn},
+        /*{path: '/curs', component: curs,
+            //配置子路由
+            children: [
+                {path: '/curs/advance',component: advance},
+                {path: 'normal',component:  normal},
+                {path: 'base',component:  base}
+            ]},*/
+        {path: '/', redirect: '/index'},
+        {path: '*', redirect: '/index'}
+    ];
+    //注册路由
+    let router = new VueRouter({
+        routes: routes,/*此处是routes,一定要牢记*/
+        linkActiveClass: 'active'/*自定义激活的链接的样式*/
+    });
+    //根组件
+    const vm = new Vue({
+        el: "#app",
+        data: {
+            foodCategory: [],
+            recommendMerchant: [],
+            shopLists: [],
+            foodLists:[]
+        },
+        router: router,
+        //挂载钩子上添加获取数据的处理
+        mounted: function () {
+            this.$http.get("goods.json").then(
+                function (res) {
+                    this.foodCategory = res.body.foodCategory;
+                    this.recommendMerchant = res.body.recommendMerchant;
+                    this.shopLists = res.body.shopLists;
+                    this.foodLists = res.body.foodLists;
+                }
+            );
+        }
+    });
+
+    //通过返回顶部的按钮已经可以学习到vue如何实现滚动事件监听,但是编写起来还是比较麻烦的,所以搜索栏本例使用jQuery完成
+    $(document).ready(function () {
+        //当滚动条的位置处于距顶部50像素以下时，
+        $(window).scroll(function () {
+            if ($(".currentLoc").length) {//如果存在location定位则使用A处理方案
+                if ($(window).scrollTop() > 60) {//注意在css样式定义中,currentLoc被定义为60了
+                    $(".topBanner").addClass("fixed-top")
+                    $(".topBanner .currentLoc").css("display", "none");
+                } else {
+                    $(".topBanner").removeClass("fixed-top");
+                    $(".topBanner .currentLoc").css("display", "block");
+                }
+            } else {//否则使用B处理方案
+                $(".topBanner").addClass("fixed-top");
+            }
+        });
+    });
+</script>
+</body>
+</html>
